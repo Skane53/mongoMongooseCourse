@@ -33,7 +33,7 @@ const createAndSavePerson = (done) => {
 const arrayOfPeople = [
   { name: "Nikola", age: 76, favoriteFoods: ["Chicken"] },
   { name: "Tesla", age: 67, favoriteFoods: ["Vegetables"] },
-  { name: "New", age: 48, favoriteFoods: ["Apple"] },
+  { name: "Newton", age: 48, favoriteFoods: ["Apple"] },
 ];
 
 const createManyPeople = (arrayOfPeople, done) => {
@@ -44,7 +44,10 @@ const createManyPeople = (arrayOfPeople, done) => {
 };
 
 const findPeopleByName = (personName, done) => {
-  done(null /*, data*/);
+  Person.find({ name: personName }, (err, data) => {
+    if (err) console.log(err);
+    done(null, data);
+  });
 };
 
 const findOneByFood = (food, done) => {
